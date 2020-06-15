@@ -3,7 +3,7 @@ package com.example.demo;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
-
+//hello
 @Entity
 public class data1 {
     @Id
