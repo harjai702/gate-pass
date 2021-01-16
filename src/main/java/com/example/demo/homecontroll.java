@@ -10,6 +10,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -24,7 +25,7 @@ import javax.validation.constraints.NotEmpty;
 @Controller
 public class homecontroll {
     private String userName="harshharjai@gmail.com";
-    private String password="9813310297";
+    private String password="";
     private String subject="";
     private String message="";
     private String port="587";
@@ -46,6 +47,15 @@ public class homecontroll {
         ModelAndView mv=new ModelAndView("1st");
         mv.addObject("uss",username);
         return mv;
+    }
+    @RequestMapping("/temp")
+    public String temp(){
+        return "temp";
+    }
+    @RequestMapping("/getres")
+    public String getres(@ModelAttribute Tempp t){
+        System.out.println(t.getName());
+        return t.getName();
     }
     ////////////////////////////////////////////////////
     @RequestMapping("/login")
@@ -233,8 +243,9 @@ public class homecontroll {
         return usrnam;
     }
     @RequestMapping("exp")
-    public void exp(){
-  String name="Harsh Harjai";
-  usrepo.findByFlname(name);
+    public void exp() {
+        String name = "Harsh Harjai";
+        usrepo.findByFlname(name);
     }
+
 }

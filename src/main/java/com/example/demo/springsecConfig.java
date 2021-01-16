@@ -13,10 +13,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import java.beans.Encoder;
 
 @Configuration
+@EnableTransactionManagement
 @EnableWebSecurity
 public class springsecConfig extends WebSecurityConfigurerAdapter{
     @Autowired
@@ -45,6 +47,8 @@ public class springsecConfig extends WebSecurityConfigurerAdapter{
             .antMatchers("/sub").permitAll()
             .antMatchers("/verifyotp").permitAll()
             .antMatchers("/enterotp1").permitAll()
+            .antMatchers("/temp").permitAll()
+            .antMatchers("/getres").permitAll()
             .antMatchers("/submitForm.web").permitAll()
             .anyRequest().fullyAuthenticated().and().formLogin().loginPage("/login")
             //.httpBasic()
